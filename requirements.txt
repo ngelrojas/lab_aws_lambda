@@ -1,3 +1,7 @@
 Flask
 jsonify
 Werkzeug
+python-dotenv
+boto3
+botocore
+pytest

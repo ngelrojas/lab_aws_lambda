@@ -1,7 +1,7 @@
-from flask import Flask, jsonify
+import json
+from flask import Flask, jsonify, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.wrappers import Request, Response
-
 
 app = Flask(__name__)
 
@@ -9,33 +9,29 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
 
-@app.route('/send-document')
+@app.route('/api/send-document', methods=['GET'])
 def send_document():
-    return jsonify(message="Hello, World!")
+    # Simulate an event and context
+    event = {
+        'httpMethod': 'GET',
+        'path': '/send-document',
+        'queryStringParameters': request.args,
+        'headers': dict(request.headers),
+        'body': None
+    }
+    context = {}
+
+    # Call the handler function
+    response = handler(event, context)
+
+    # Return the response from the handler
+    return jsonify(response)
 
 
 def handler(event, context):
-    # Convert the API Gateway event to a WSGI request
-    request = Request.from_values(
-        method=event['httpMethod'],
-        path=event['path'],
-        query_string=event['queryStringParameters'],
-        headers=event['headers'],
-        data=event['body']
-    )
-
-    # Create a response object
-    response = Response()
-
-    # Dispatch the request to the Flask app
-    app.wsgi_app(request.environ, response.start_response)
-
-    # Return the response as a dictionary
-    return {
-        'statusCode': response.status_code,
-        'headers': dict(response.headers),
-        'body': response.get_data(as_text=True)
-    }
+    print(event, context)
+    data = {"last_name": "rojas", "name": "nelson"}
+    return data
 
 
 if __name__ == "__main__":

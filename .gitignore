@@ -4,5 +4,6 @@ backend
 /src/*.pyc
 /src/connections/__pycache__/*
 /src/services/__pycache__/*
-/src/constants/__pycache__/*
+/src/utils/__pycache__/*
 .env
+tests/__pycache__/*
