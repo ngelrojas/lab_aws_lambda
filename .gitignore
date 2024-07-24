@@ -1,0 +1,8 @@
+backend
+.idea
+/src/__pycache__/*
+/src/*.pyc
+/src/connections/__pycache__/*
+/src/services/__pycache__/*
+/src/constants/__pycache__/*
+.env
