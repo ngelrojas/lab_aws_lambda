@@ -6,9 +6,9 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "9001:5000"  # Map port 9001 on the host to port 5000 in the container
+      - "9001:5000"
     env_file:
       - .env
     volumes:
-      - ./src:/app  # Mount the src directory to /app in the container
+      - ./src:/app
     command: ["python", "lambda_functions.py"]

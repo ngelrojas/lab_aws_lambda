@@ -8,4 +8,4 @@ pytest
 pillow
 requests
 pypdf
-pypdf2
+pre-commit
