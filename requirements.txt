@@ -5,3 +5,7 @@ python-dotenv
 boto3
 botocore
 pytest
+pillow
+requests
+pypdf
+pypdf2
